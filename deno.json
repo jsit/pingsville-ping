@@ -1,0 +1,10 @@
+{
+  "tasks": {
+    "dev": "deno run --watch --allow-net -A main.ts",
+    "start": "deno run --allow-net -A main.ts"
+  },
+  "fmt": {
+    "semiColons": true,
+    "singleQuote": true
+  }
+}
