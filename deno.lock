@@ -3,7 +3,8 @@
   "packages": {
     "specifiers": {
       "npm:davexmlrpc@^0.4.26": "npm:davexmlrpc@0.4.26",
-      "npm:mongodb": "npm:mongodb@6.2.0"
+      "npm:mongodb": "npm:mongodb@6.2.0",
+      "npm:rss-parser@^3.13.0": "npm:rss-parser@3.13.0"
     },
     "npm": {
       "@mongodb-js/saslprep@1.1.0": {
@@ -121,6 +122,10 @@
           "jsbn": "jsbn@0.1.1",
           "safer-buffer": "safer-buffer@2.1.2"
         }
+      },
+      "entities@2.2.0": {
+        "integrity": "sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==",
+        "dependencies": {}
       },
       "extend@3.0.2": {
         "integrity": "sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==",
@@ -282,6 +287,13 @@
           "uuid": "uuid@3.4.0"
         }
       },
+      "rss-parser@3.13.0": {
+        "integrity": "sha512-7jWUBV5yGN3rqMMj7CZufl/291QAhvrrGpDNE4k/02ZchL0npisiYYqULF71jCEKoIiHvK/Q2e6IkDwPziT7+w==",
+        "dependencies": {
+          "entities": "entities@2.2.0",
+          "xml2js": "xml2js@0.5.0"
+        }
+      },
       "safe-buffer@5.2.1": {
         "integrity": "sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==",
         "dependencies": {}
@@ -368,6 +380,13 @@
         "dependencies": {
           "tr46": "tr46@3.0.0",
           "webidl-conversions": "webidl-conversions@7.0.0"
+        }
+      },
+      "xml2js@0.5.0": {
+        "integrity": "sha512-drPFnkQJik/O+uPKpqSgr22mpuFHqKdbS835iAQrUC73L2F5WkboIRd63ai/2Yg6I1jzifPFKH2NTK+cfglkIA==",
+        "dependencies": {
+          "sax": "sax@1.3.0",
+          "xmlbuilder": "xmlbuilder@11.0.1"
         }
       },
       "xml2js@0.6.2": {

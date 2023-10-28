@@ -1,8 +1,13 @@
+import type { ObjectId } from './index.ts';
+
 export interface BlogPost {
+  _id: ObjectId;
   author: string;
   title: string;
-  guid?: string;
+  blogId: ObjectId;
+  guid: string;
+  url: string;
   pubDate?: Date;
-  tags?: string[];
+  tags?: ObjectId[];
   description?: string;
 }

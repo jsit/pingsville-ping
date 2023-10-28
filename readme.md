@@ -84,18 +84,25 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 1. List databases: `show databases`
 1. Switch to the Pingsville database: `use pingsville`
 1. Show collections: `show collections`
+
+### Blogs
 1. Show documents in blogs collection: `db.blogs.find()`
-1. To clear all documents from the collection: `db.blogs.deleteMany({})`
+1. To clear all blogs from the collection: `db.blogs.deleteMany({})`
 1. To count the number of blogs: `db.blogs.countDocuments({})`
+
+### Blog Posts
+1. Show documents in blogPosts collection: `db.blogPosts.find()`
+1. To clear all blogs from the collection: `db.blogPosts.deleteMany({})`
+1. To count the number of blogs: `db.blogPosts.countDocuments({})`
 
 
 ## To Do
 
+- [x] Scrape feed data and store blog posts
 - [ ] Better error handling
 - [ ] Return something meaningful to the pinger
 - [ ] Use GraphQL, to be database-agnostic
 - [ ] Normalize URLs (remove trailing slash, expand short URLs, etc.)
-- [ ] Scrape feed data and store blog posts
 - [ ] Prevent spamming?
 - [ ] A job queue?
 - [ ] Create Pingsville API, for querying data

@@ -1,23 +1,16 @@
 import xmlrpc from 'npm:davexmlrpc@^0.4.26';
 import type { XmlRequest } from './types/index.ts';
-import {
-  addBlog,
-  blogExists,
-  blogFromParams,
-  processFeed,
-} from './utils/index.ts';
+import { blogs } from './db.ts';
+import { xmlRpcConfig } from './config.ts';
+import { blogExists, blogFromParams, processFeed } from './utils/index.ts';
 
-const config = {
-  port: 1417,
-  xmlRpcPath: '/',
-};
-
-const handleRequest = async (request: XmlRequest): Promise<boolean> => {
-  const { verb, params, returnVal } = request;
-
+const handleRequest = async (
+  { verb, params, returnVal }: XmlRequest,
+): Promise<boolean> => {
   switch (verb) {
     case 'weblogUpdates.extendedPing':
       if (params.length > 2) {
+        // Create a Blog object from the string params
         const blog = blogFromParams(params);
 
         if (blog !== undefined) {
@@ -25,17 +18,24 @@ const handleRequest = async (request: XmlRequest): Promise<boolean> => {
           console.log('This is the blog homepage: ', blog.url);
           console.log('This is the blog feed: ', blog.feedUrl);
 
-          console.log(
-            'Does this blog already exist?: ',
-            await blogExists(blog.url),
-          );
+          // Get ObjectId (or undefined) of existing blog, if it exists
+          const existingBlog = await blogExists(blog.url);
 
-          await processFeed(blog.feedUrl);
+          if (!existingBlog) {
+            console.log('We don\'t know this blog; add it to the collection.');
 
-          if (!(await blogExists(blog.url))) {
-            await addBlog(blog);
+            // We don't know this blog; add it to the blogs collection
+            const blogId = await blogs.insertOne(blog);
+
+            // Process the feed for this blog
+            await processFeed({ url: blog.feedUrl, blogId: blogId });
           } else {
-            // update blog with new lastupdated date
+            console.log('This is a known blog.');
+
+            // TODO: update blog with new lastupdated date
+
+            // Process the feed for this blog
+            await processFeed({ url: blog.feedUrl, blogId: existingBlog });
           }
         }
 
@@ -90,4 +90,4 @@ const handleRequest = async (request: XmlRequest): Promise<boolean> => {
   }
 };
 
-xmlrpc.startServerOverHttp(config, handleRequest);
+xmlrpc.startServerOverHttp(xmlRpcConfig, handleRequest);

@@ -1,7 +1,11 @@
 import { blogPosts } from '../db.ts';
+import { type BlogPost } from '../types/index.ts';
 
-export const blogPostExists = async (guid: string): Promise<boolean> => {
-  if ((await blogPosts.countDocuments({ guid: guid })) !== 0) {
+export const blogPostExists = async (blogPost: BlogPost): Promise<boolean> => {
+  if (
+    await blogPosts.countDocuments({ guid: blogPost.guid }) !== 0 ||
+    await blogPosts.countDocuments({ url: blogPost.url }) !== 0
+  ) {
     return true;
   } else {
     return false;
