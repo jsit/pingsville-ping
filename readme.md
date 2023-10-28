@@ -95,6 +95,10 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 1. To clear all blogs from the collection: `db.blogPosts.deleteMany({})`
 1. To count the number of blogs: `db.blogPosts.countDocuments({})`
 
+### Tags
+1. Show documents in tags collection: `db.tags.find()`
+1. To clear all tags from the collection: `db.tags.deleteMany({})`
+1. To count the number of tags: `db.tags.countDocuments({})`
 
 ## To Do
 

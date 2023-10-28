@@ -24,7 +24,9 @@ export const processFeed = async (
           const text = await result.text();
           const parsed = await parser.parseString(text);
 
-          parsed.items.forEach(async (item) => {
+          // Need to do a traditional loop so that newly created tags are found for
+          // multiple posts that have them
+          for (const item of parsed.items) {
             // Create a BlogPost object from this item
             const blogPost: BlogPost = {
               ...blogPostFromItem(item),
@@ -33,16 +35,16 @@ export const processFeed = async (
 
             // If we don't already have the blog post, insert it
             if (!(await blogPostExists(blogPost))) {
-              const tags = processTags(item?.categories || []);
+              const tags = await processTags(item?.categories || []);
 
               const taggedBlogPost: BlogPost = {
                 ...blogPost,
-                ...(tags.length > 0 && tags),
+                tags,
               };
 
               await blogPosts.insertOne(taggedBlogPost);
             }
-          });
+          }
           return true;
         }
         default:
