@@ -94,6 +94,8 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 1. Show documents in blogPosts collection: `db.blogPosts.find()`
 1. To clear all blogs from the collection: `db.blogPosts.deleteMany({})`
 1. To count the number of blogs: `db.blogPosts.countDocuments({})`
+1. To find all blog posts with a particular tag: `db.blogPosts.find({tags: ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX")})`
+1. To find all blog posts from a particular blog: `db.blogPosts.find({blogId: ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX")})`
 
 ### Tags
 1. Show documents in tags collection: `db.tags.find()`
@@ -105,9 +107,10 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 - [x] Scrape feed data and store blog posts
 - [x] Store tags
 - [ ] Better error handling
+- [ ] Normalize tags
+- [ ] Normalize URLs (remove trailing slash, expand short URLs, etc.)
 - [ ] Return something meaningful to the pinger
 - [ ] Use GraphQL, to be database-agnostic
-- [ ] Normalize URLs (remove trailing slash, expand short URLs, etc.)
 - [ ] Prevent spamming?
 - [ ] A job queue?
 - [ ] Create Pingsville API, for querying data

@@ -5,6 +5,7 @@ export const blogPostFromItem = (item: Item): BlogPost => {
     author: item.creator || '',
     title: item.title || '',
     guid: item.guid || '',
+    summary: item.contentSnippet,
     pubDate: item.pubDate ? new Date(item?.pubDate) : undefined,
     url: item.link || '',
   };
