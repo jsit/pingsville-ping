@@ -44,24 +44,24 @@ Using [Postman](https://www.postman.com/), you can send a POST request to
 ```xml
 <?xml version="1.0"?>
 <methodCall>
-	<methodName>weblogUpdates.extendedPing</methodName>
-	<params>
-		<param>
-			<value>
-				<string>Example Blog</string>
-			</value>
-		</param>
-		<param>
-			<value>
-				<string>https://blog.example.com/</string>
-			</value>
-		</param>
-		<param>
-			<value>
-				<string>https://blog.example.com/feed/</string>
-			</value>
-		</param>
-	</params>
+  <methodName>weblogUpdates.extendedPing</methodName>
+  <params>
+    <param>
+      <value>
+        <string>Example Blog</string>
+      </value>
+    </param>
+    <param>
+      <value>
+        <string>https://blog.example.com/</string>
+      </value>
+    </param>
+    <param>
+      <value>
+        <string>https://blog.example.com/feed/</string>
+      </value>
+    </param>
+  </params>
 </methodCall>
 ```
 
@@ -99,6 +99,7 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 ## To Do
 
 - [x] Scrape feed data and store blog posts
+- [x] Store tags
 - [ ] Better error handling
 - [ ] Return something meaningful to the pinger
 - [ ] Use GraphQL, to be database-agnostic
