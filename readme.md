@@ -1,6 +1,9 @@
 # Pingsville Ping
 
-A tiny Deno server that accepts XML-RPC pings and stores them in a database.
+A tiny Deno server that:
+1. Accepts XML-RPC `weblogUpdates.extendedPing`s,
+1. Parses the RSS/JSON feed, then
+1. Saves blogs, posts, and tags to a database
 
 ## Set up
 
@@ -70,6 +73,9 @@ The Deno task should log the values to the console, and add an entry to the
 
 If a feed URL is provided, it will grab the feed XML/JSON and add all the
 entries to a database collection called `blogPosts`.
+
+If these posts have categories or tags, those will be saved to a `tags`
+collection as well.
 
 ### WordPress
 
