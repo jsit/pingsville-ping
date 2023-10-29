@@ -1,5 +1,5 @@
 export type { Blog } from './Blog.ts';
-export type { BlogPost } from './BlogPost.ts';
+export type { BlogPost, BlogPostTag, BlogPostBlog } from './BlogPost.ts';
 export type { XmlRequest } from './XmlRequest.ts';
 export type { Tag } from './Tag.ts';
 

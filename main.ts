@@ -28,14 +28,22 @@ const handleRequest = async (
             const blogId = await blogs.insertOne(blog);
 
             // Process the feed for this blog
-            await processFeed({ url: blog.feedUrl, blogId: blogId });
+            await processFeed({
+              url: blog.feedUrl,
+              blogId: blogId,
+              blogName: blog.name,
+            });
           } else {
             console.log('This is a known blog.');
 
             // TODO: update blog with new lastupdated date
 
             // Process the feed for this blog
-            await processFeed({ url: blog.feedUrl, blogId: existingBlog });
+            await processFeed({
+              url: blog.feedUrl,
+              blogId: existingBlog,
+              blogName: blog.name,
+            });
           }
         }
 

@@ -6,10 +6,11 @@ import { blogPostExists, blogPostFromItem, processTags } from './index.ts';
 interface processFeedProps {
   url: string;
   blogId: ObjectId;
+  blogName: string;
 }
 
 export const processFeed = async (
-  { url, blogId }: processFeedProps,
+  { url, blogId, blogName }: processFeedProps,
 ): Promise<boolean> => {
   await fetch(url).then(
     async (result) => {
@@ -30,7 +31,10 @@ export const processFeed = async (
             // Create a BlogPost object from this item
             const blogPost: BlogPost = {
               ...blogPostFromItem(item),
-              blogId,
+              blog: {
+                name: blogName,
+                id: blogId,
+              },
             };
 
             // If we don't already have the blog post, insert it
