@@ -112,9 +112,9 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 
 - [x] Scrape feed data and store blog posts
 - [x] Store tags
+- [x] Normalize tags
 - [ ] Look into using [@foxglove/xmlrpc](https://www.npmjs.com/package/@foxglove/xmlrpc)
 - [ ] Better error handling
-- [ ] Normalize tags
 - [ ] Normalize URLs (remove trailing slash, expand short URLs, etc.)
 - [ ] Return something meaningful to the pinger
 - [ ] Use GraphQL, to be database-agnostic
