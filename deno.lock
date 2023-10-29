@@ -3,6 +3,7 @@
   "packages": {
     "specifiers": {
       "npm:davexmlrpc@^0.4.26": "npm:davexmlrpc@0.4.26",
+      "npm:latinize@^2.0.0": "npm:latinize@2.0.0",
       "npm:mongodb": "npm:mongodb@6.2.0",
       "npm:rss-parser@^3.13.0": "npm:rss-parser@3.13.0"
     },
@@ -212,6 +213,10 @@
           "json-schema": "json-schema@0.4.0",
           "verror": "verror@1.10.0"
         }
+      },
+      "latinize@2.0.0": {
+        "integrity": "sha512-bMWAnS0C6s9rNqahOEzBEIb9RWECgD1sfmDPws/YoFGAVbC3cjNGCS3Y1THhaQ5wtTJfrq1RO69IM2dGA0DuEg==",
+        "dependencies": {}
       },
       "memory-pager@1.5.0": {
         "integrity": "sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==",
