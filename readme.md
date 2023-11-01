@@ -107,21 +107,22 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 1. Show documents in tags collection: `db.tags.find()`
 1. To clear all tags from the collection: `db.tags.deleteMany({})`
 1. To count the number of tags: `db.tags.countDocuments({})`
+1. To found the number of blog posts that contain each tag: ``db.tags.find().forEach(function (tag) {print(`${tag.name}: ${db.blogPosts.countDocuments({ tags: { $elemMatch: { id: tag._id }}})}`)})``
 
 ## To Do
 
-- [x] Scrape feed data and store blog posts
-- [x] Store tags
-- [x] Normalize tags
-- [x] Return something meaningful to the pinger ([spec](http://www.hixie.ch/specs/pingback/pingback-1.0#http://www.hixie.ch/specs/pingback/pingback#TOC3))
+- [ ] Normalize URLs (remove trailing slash, expand short URLs, etc.)
 - [ ] Look into using [@foxglove/xmlrpc](https://www.npmjs.com/package/@foxglove/xmlrpc)
 - [ ] Better error handling
-- [ ] Normalize URLs (remove trailing slash, expand short URLs, etc.)
 - [ ] Use GraphQL, to be database-agnostic
 - [ ] Prevent spamming?
 - [ ] A job queue?
 - [ ] Create Pingsville API, for querying data
 - [ ] Create Pingsville Web, for browsing content
+- [x] Scrape feed data and store blog posts
+- [x] Store tags
+- [x] Normalize tags
+- [x] Return something meaningful to the pinger ([spec](http://www.hixie.ch/specs/pingback/pingback-1.0#http://www.hixie.ch/specs/pingback/pingback#TOC3))
 
 ## Resources
 

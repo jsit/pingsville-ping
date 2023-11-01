@@ -18,7 +18,8 @@ export const processTags = async (tags: string[]): Promise<BlogPostTag[]> => {
       .toLowerCase();
     const existingTag = await tagsDb.findOne({ name: normalizedTag });
     const blogPostTag = {
-      id: existingTag?._id ?? await tagsDb.insertOne({ name: normalizedTag }),
+      id: existingTag?._id ??
+        await tagsDb.insertOne({ name: normalizedTag, displayName: tag }),
       name: tag,
     };
 
