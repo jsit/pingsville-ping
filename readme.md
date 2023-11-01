@@ -107,7 +107,7 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 1. Show documents in tags collection: `db.tags.find()`
 1. To clear all tags from the collection: `db.tags.deleteMany({})`
 1. To count the number of tags: `db.tags.countDocuments({})`
-1. To found the number of blog posts that contain each tag: ``db.tags.find().forEach(function (tag) {print(`${tag.name}: ${db.blogPosts.countDocuments({ tags: { $elemMatch: { id: tag._id }}})}`)})``
+1. To count the number of blog posts that contain each tag: ``db.tags.find().forEach(function (tag) {print(`${tag.name}: ${db.blogPosts.countDocuments({ tags: { $elemMatch: { id: tag._id }}})}`)})``
 
 ## To Do
 
