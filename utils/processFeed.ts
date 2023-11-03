@@ -43,14 +43,14 @@ export const processFeed = async (
               },
             };
 
+            const allCategories = [
+              ...(item?.categories ? item?.categories : []),
+              ...(item?.keywords ? [item?.keywords] : []),
+            ];
+
             // If we don't already have the blog post, insert it
             if (!(await blogPostExists(blogPost))) {
-              const tags = await processTags(
-                [
-                  ...(item?.categories ? item?.categories : []),
-                  item?.keywords || '',
-                ],
-              );
+              const tags = await processTags(allCategories);
 
               const taggedBlogPost: BlogPost = {
                 ...blogPost,
