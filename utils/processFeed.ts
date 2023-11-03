@@ -21,7 +21,13 @@ export const processFeed = async (
         case 'application/xml':
         case 'text/xml':
         case 'application/json': {
-          const parser = new Parser();
+          const parser = new Parser({
+            customFields: {
+              item: [
+                ['media:keywords', 'keywords'],
+              ],
+            },
+          });
           const text = await result.text();
           const parsed = await parser.parseString(text);
 
@@ -39,7 +45,12 @@ export const processFeed = async (
 
             // If we don't already have the blog post, insert it
             if (!(await blogPostExists(blogPost))) {
-              const tags = await processTags(item?.categories || []);
+              const tags = await processTags(
+                [
+                  ...(item?.categories ? item?.categories : []),
+                  item?.keywords || '',
+                ],
+              );
 
               const taggedBlogPost: BlogPost = {
                 ...blogPost,

@@ -14,13 +14,14 @@ export const processTags = async (tags: string[]): Promise<BlogPostTag[]> => {
   // Need to do a traditional loop so that newly created tags are found for
   // multiple posts that have them
   for (const tag of splitTags) {
+    const cleanTag = tag.trim();
     const normalizedTag = latinize(tag).replace(/([^a-zA-Z0-9]|\s)/g, '').trim()
       .toLowerCase();
     const existingTag = await tagsDb.findOne({ name: normalizedTag });
     const blogPostTag = {
       id: existingTag?._id ??
-        await tagsDb.insertOne({ name: normalizedTag, displayName: tag }),
-      name: tag,
+        await tagsDb.insertOne({ name: normalizedTag, displayName: cleanTag }),
+      name: cleanTag,
     };
 
     blogPostTags.push(blogPostTag);
