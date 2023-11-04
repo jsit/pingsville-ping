@@ -93,21 +93,24 @@ recommend [wp-now](https://www.npmjs.com/package/@wp-now/wp-now)) by adding
 
 ### Blogs
 1. Show documents in blogs collection: `db.blogs.find()`
-1. To clear all blogs from the collection: `db.blogs.deleteMany({})`
-1. To count the number of blogs: `db.blogs.countDocuments({})`
+1. Clear all blogs from the collection: `db.blogs.deleteMany({})`
+1. Count the number of blogs: `db.blogs.countDocuments({})`
 
 ### Blog Posts
 1. Show documents in blogPosts collection: `db.blogPosts.find()`
-1. To clear all blogs from the collection: `db.blogPosts.deleteMany({})`
-1. To count the number of blogs: `db.blogPosts.countDocuments({})`
-1. To find all blog posts with a particular tag: `db.blogPosts.find({tags: ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX")})`
-1. To find all blog posts from a particular blog: `db.blogPosts.find({blogId: ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX")})`
+1. Clear all blogs from the collection: `db.blogPosts.deleteMany({})`
+1. Count the number of blogs: `db.blogPosts.countDocuments({})`
+1. Find all blog posts in reverse chronological order: `db.blogPosts.find().sort({ pubDate: -1 })`
+1. Find all blog posts with a particular tag: `db.blogPosts.find({tags: ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX")})`
+1. Find all blog posts from a particular blog: `db.blogPosts.find({"blog.id": ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX")})`
 
 ### Tags
 1. Show documents in tags collection: `db.tags.find()`
-1. To clear all tags from the collection: `db.tags.deleteMany({})`
-1. To count the number of tags: `db.tags.countDocuments({})`
-1. To count the number of blog posts that contain each tag: ``db.tags.find().forEach(function (tag) {print(`${tag.name}: ${db.blogPosts.countDocuments({ tags: { $elemMatch: { id: tag._id }}})}`)})``
+1. Clear all tags from the collection: `db.tags.deleteMany({})`
+1. Count the number of tags: `db.tags.countDocuments({})`
+
+### Cleanup
+1. Remove all instances of tag from all blog posts: `db.blogPosts.updateMany({}, { $pull: { "tags": { id: ObjectId("XXXXXXXXXXXXXXXXXXXXXXXX") }}})`
 
 ## To Do
 
