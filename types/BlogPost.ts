@@ -15,7 +15,7 @@ export interface BlogPost {
   title: string;
   guid: string;
   url: string;
-  blog: BlogPostBlog;
+  blog?: BlogPostBlog;
   pubDate?: Date;
   tags?: BlogPostTag[];
   description?: string;

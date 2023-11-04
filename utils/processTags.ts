@@ -1,6 +1,6 @@
 import latinize from 'npm:latinize@^2.0.0';
 import type { BlogPostTag } from '../types/index.ts';
-import { tags as tagsDb } from '../db.ts';
+import { findTagByName, insertTag } from './db/index.ts';
 
 export const processTags = async (tags: string[]): Promise<BlogPostTag[]> => {
   // Split tags by comma, if necessary
@@ -17,10 +17,10 @@ export const processTags = async (tags: string[]): Promise<BlogPostTag[]> => {
     const cleanTag = tag.trim();
     const normalizedTag = latinize(tag).replace(/([^a-zA-Z0-9]|\s)/g, '').trim()
       .toLowerCase();
-    const existingTag = await tagsDb.findOne({ name: normalizedTag });
+    const existingTag = await findTagByName(normalizedTag);
     const blogPostTag = {
       id: existingTag?._id ??
-        await tagsDb.insertOne({ name: normalizedTag, displayName: cleanTag }),
+        await insertTag({ name: normalizedTag, displayName: cleanTag }),
       name: cleanTag,
     };
 

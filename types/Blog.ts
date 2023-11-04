@@ -1,7 +1,7 @@
 import { ObjectId } from './index.ts';
 
 export interface Blog {
-  _id: ObjectId;
+  _id?: ObjectId;
   name: string;
   url: string;
   feedUrl: string;

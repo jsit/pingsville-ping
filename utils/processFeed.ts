@@ -1,7 +1,8 @@
 import Parser from 'npm:rss-parser@^3.13.0';
 import type { BlogPost, ObjectId } from '../types/index.ts';
-import { blogPosts } from '../db.ts';
-import { blogPostExists, blogPostFromItem, processTags } from './index.ts';
+import { insertBlogPost } from '../utils/db/index.ts';
+import { blogPostFromItem, processTags } from './index.ts';
+import { blogPostExists } from './db/index.ts';
 
 interface processFeedProps {
   url: string;
@@ -57,7 +58,7 @@ export const processFeed = async (
                 tags,
               };
 
-              await blogPosts.insertOne(taggedBlogPost);
+              await insertBlogPost(taggedBlogPost);
             }
           }
           return true;

@@ -1,5 +1,5 @@
-import { blogPosts } from '../db.ts';
-import { type BlogPost } from '../types/index.ts';
+import { blogPosts } from './client.ts';
+import { type BlogPost } from '../../types/index.ts';
 
 export const blogPostExists = async (blogPost: BlogPost): Promise<boolean> => {
   if (

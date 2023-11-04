@@ -1,5 +1,5 @@
 import { MongoClient } from 'https://deno.land/x/mongo@v0.32.0/mod.ts';
-import type { Blog, BlogPost, Tag } from './types/index.ts';
+import type { Blog, BlogPost, Tag } from '../../types/index.ts';
 
 const client = new MongoClient();
 

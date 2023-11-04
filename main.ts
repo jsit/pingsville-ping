@@ -1,8 +1,8 @@
 import xmlrpc from 'npm:davexmlrpc@^0.4.26';
 import type { XmlRequest } from './types/index.ts';
-import { blogs } from './db.ts';
 import { xmlRpcConfig } from './config.ts';
-import { blogExists, blogFromParams, processFeed } from './utils/index.ts';
+import { blogFromParams, processFeed } from './utils/index.ts';
+import { blogExists, insertBlog } from './utils/db/index.ts';
 
 const handleRequest = async (
   { verb, params, returnVal }: XmlRequest,
@@ -25,7 +25,7 @@ const handleRequest = async (
             console.log('We don\'t know this blog; add it to the collection.');
 
             // We don't know this blog; add it to the blogs collection
-            const blogId = await blogs.insertOne(blog);
+            const blogId = await insertBlog(blog);
 
             // Process the feed for this blog
             await processFeed({
