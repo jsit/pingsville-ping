@@ -1,4 +1,4 @@
 export const xmlRpcConfig = {
-  port: 8000,
+  port: 1417,
   xmlRpcPath: '/',
 }
