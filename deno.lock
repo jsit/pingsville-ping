@@ -5,6 +5,7 @@
       "npm:davexmlrpc@^0.4.26": "npm:davexmlrpc@0.4.26",
       "npm:latinize@^2.0.0": "npm:latinize@2.0.0",
       "npm:mongodb": "npm:mongodb@6.2.0",
+      "npm:mongodb@6.2.0": "npm:mongodb@6.2.0",
       "npm:rss-parser@^3.13.0": "npm:rss-parser@3.13.0"
     },
     "npm": {
@@ -441,6 +442,7 @@
     "https://deno.land/std@0.154.0/testing/_diff.ts": "141f978a283defc367eeee3ff7b58aa8763cf7c8e0c585132eae614468e9d7b8",
     "https://deno.land/std@0.154.0/testing/_format.ts": "cd11136e1797791045e639e9f0f4640d5b4166148796cad37e6ef75f7d7f3832",
     "https://deno.land/std@0.154.0/testing/asserts.ts": "ac295f7fd22a7af107580e2475402a8c386cb1bf18bf837ae266ac0665786026",
+    "https://deno.land/std@0.206.0/dotenv/mod.ts": "039468f5c87d39b69d7ca6c3d68ebca82f206ec0ff5e011d48205eea292ea5a6",
     "https://deno.land/x/mongo@v0.32.0/deps.ts": "1b53a32fbc115195d74ab78e7d21026ea4b6590e5b558b388017cc1a9b8181e6",
     "https://deno.land/x/mongo@v0.32.0/mod.ts": "0989f34d08c40440b8786140abdaf863e964e23df5d1a80e661d3d4170d9d21e",
     "https://deno.land/x/mongo@v0.32.0/src/auth/base.ts": "7fe14cf0a63d6bbc4ba69a000a04b3b184d26842504d94652a6af2d0c9494944",

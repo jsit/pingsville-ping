@@ -1,11 +1,21 @@
-import { MongoClient } from 'https://deno.land/x/mongo@v0.32.0/mod.ts';
+import { load } from 'https://deno.land/std@0.206.0/dotenv/mod.ts';
+import { MongoClient } from 'npm:mongodb@6.2.0';
 import type { Blog, BlogPost, Tag } from '../../types/index.ts';
 
-const client = new MongoClient();
+const env = await load();
 
-await client.connect('mongodb://127.0.0.1:27017');
+// // Local
+// const client = new MongoClient('mongodb://127.0.0.1:27017');
 
-const db = client.database('pingsville');
+const client = new MongoClient(
+  `mongodb+srv://${env['MONGO_USER']}:${env['MONGO_PW']}@${
+    env['MONGO_DOMAIN']
+  }/deno?authMechanism=SCRAM-SHA-1`,
+);
+
+await client.connect();
+
+const db = client.db(env['MONGO_DB']);
 
 export const blogs = db.collection<Blog>('blogs');
 export const blogPosts = db.collection<BlogPost>('blogPosts');
