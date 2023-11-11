@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "davexmlrpc": "^0.4.26",
+    "mongodb": "^6.2.0"
+  }
+}
