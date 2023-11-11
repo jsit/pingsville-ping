@@ -162,6 +162,6 @@ const handler = async (req: Request): Promise<Response> => {
   });
 };
 
-Deno.serve({ port: 1417 }, handler);
+Deno.serve({ port: 8000 }, handler);
 
 // xmlrpc.startServerOverHttp(xmlRpcConfig, handleRequest);
