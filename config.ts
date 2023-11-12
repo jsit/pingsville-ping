@@ -1,4 +1,4 @@
 export const xmlRpcConfig = {
-  port: 80,
+  port: 443,
   xmlRpcPath: '/',
 };
