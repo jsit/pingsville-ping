@@ -18,7 +18,7 @@ export const processTags = async (tags: string[]): Promise<BlogPostTag[]> => {
     const normalizedTag = latinize(tag).replace(/([^a-zA-Z0-9]|\s)/g, '').trim()
       .toLowerCase();
     const existingTag = await findTagByName(normalizedTag);
-    const blogPostTag = {
+    const blogPostTag: BlogPostTag = {
       id: existingTag?._id ??
         await insertTag({ name: normalizedTag, displayName: cleanTag }),
       name: cleanTag,

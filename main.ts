@@ -9,7 +9,7 @@ const handleRequest = async (
 ): Promise<boolean> => {
   switch (verb) {
     case 'weblogUpdates.extendedPing':
-      if (params.length > 2) {
+      if (params && params.length > 2) {
         // Create a Blog object from the string params
         const blog = blogFromParams(params);
 
@@ -58,13 +58,13 @@ const handleRequest = async (
             message:
               'There must be at least three parameters to perform an extended ping.',
           },
-          undefined,
+          '',
         );
       }
       return true; // we handled it
 
     case 'weblogUpdates.ping':
-      if (params.length > 1) {
+      if (params && params.length > 1) {
         console.log('Standard ping!\nThis is the blog title: ', params[0]);
         console.log('This is the blog homepage: ', params[1]);
 
@@ -80,7 +80,7 @@ const handleRequest = async (
             name: 'Not enough parameters',
             message: 'There must be at least two parameter to perform a ping.',
           },
-          undefined,
+          '',
         );
       }
       return true; // we handled et
@@ -92,7 +92,7 @@ const handleRequest = async (
           message:
             'Verb must be weblogUpdates.extendedPing or weblogUpdates.ping.',
         },
-        undefined,
+        '',
       );
       return false;
   }

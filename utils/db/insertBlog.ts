@@ -1,6 +1,7 @@
-import type { Blog, ObjectId } from '../../types/index.ts';
+import { type Blog, ObjectId } from '../../types/index.ts';
 import { blogs } from './client.ts';
 
 export const insertBlog = async (blog: Blog): Promise<ObjectId> => {
-  return await blogs.insertOne(blog);
-}
+  const newBlog = await blogs.insertOne(blog);
+  return new ObjectId(newBlog.insertedId);
+};

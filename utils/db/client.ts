@@ -13,7 +13,7 @@ const client = new MongoClient({
   }/endpoint/data/v1`,
   dataSource: Deno.env.get('ATLAS_CLUSTER') || '',
   auth: {
-    apiKey: Deno.env.get('ATLAS_API_KEY'),
+    apiKey: Deno.env.get('ATLAS_API_KEY') || '',
   },
 });
 
