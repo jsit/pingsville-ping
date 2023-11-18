@@ -2,11 +2,15 @@ import xmlrpc from 'npm:davexmlrpc@^0.4.26';
 import type { XmlRequest } from './types/index.ts';
 import { xmlRpcConfig } from './config.ts';
 import { blogFromParams, processFeed } from './utils/index.ts';
-import { blogExists, insertBlog } from './utils/db/index.ts';
+import { blogExists, hostIsBanned, insertBlog } from './utils/db/index.ts';
 
 const handleRequest = async (
-  { verb, params, returnVal }: XmlRequest,
+  { verb, params, returnVal, httpRequest }: XmlRequest,
 ): Promise<boolean> => {
+  if (await hostIsBanned(httpRequest.host)) {
+    return false;
+  }
+
   switch (verb) {
     case 'weblogUpdates.extendedPing':
       if (params && params.length > 2) {

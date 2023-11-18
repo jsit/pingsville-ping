@@ -1,6 +1,6 @@
 import { load } from 'https://deno.land/std@0.206.0/dotenv/mod.ts';
 import { MongoClient } from 'https://deno.land/x/atlas_sdk@v1.1.1/mod.ts';
-import type { Blog, BlogPost, Tag } from '../../types/index.ts';
+import type { BannedHost, Blog, BlogPost, Tag } from '../../types/index.ts';
 
 await load({ export: true });
 
@@ -22,3 +22,4 @@ const db = client.database(Deno.env.get('ATLAS_DB') || '');
 export const blogs = db.collection<Blog>('blogs');
 export const blogPosts = db.collection<BlogPost>('blogPosts');
 export const tags = db.collection<Tag>('tags');
+export const bannedHosts = db.collection<BannedHost>('bannedHosts');
