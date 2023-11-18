@@ -7,7 +7,7 @@ import { blogExists, hostIsBanned, insertBlog } from './utils/db/index.ts';
 const handleRequest = async (
   { verb, params, returnVal, httpRequest }: XmlRequest,
 ): Promise<boolean> => {
-  if (await hostIsBanned(httpRequest.host)) {
+  if (await hostIsBanned(httpRequest.client)) {
     return false;
   }
 
